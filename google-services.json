@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "395204650284",
+    "project_id": "mindmeld-cde4f",
+    "storage_bucket": "mindmeld-cde4f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:395204650284:android:8f388daab9dd289755b889",
+        "android_client_info": {
+          "package_name": "com.example.mindmeld"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA5N-quKYuqGFZkz1S2U_M_TDn_N7tCEMw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
