@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.example.mindmeld.fragment.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_nav_home_to_profileFragment"
+            app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_nav_home_to_othersProfileFragment"
+            app:destination="@id/othersProfileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addFragment"
+        android:name="com.example.mindmeld.fragment.AddFragment"
+        android:label="Post"
+        tools:layout="@layout/fragment_add" />
+    <fragment
+        android:id="@+id/notificationFragment"
+        android:name="com.example.mindmeld.fragment.NotificationFragment"
+        android:label="Notifications"
+        tools:layout="@layout/fragment_notification" />
+    <fragment
+        android:id="@+id/notification2Fragment"
+        android:name="com.example.mindmeld.fragment.Notification2Fragment"
+        android:label="fragment_notification2"
+        tools:layout="@layout/fragment_notification2" />
+    <fragment
+        android:id="@+id/followFragment"
+        android:name="com.example.mindmeld.fragment.FollowFragment"
+        android:label="Follow"
+        tools:layout="@layout/fragment_follow" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.mindmeld.fragment.ProfileFragment"
+        android:label="Profile"
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/othersProfileFragment"
+        android:name="com.example.mindmeld.fragment.OthersProfileFragment"
+        android:label="Profile"
+        tools:layout="@layout/fragment_others_profile" />
+
+</navigation>
