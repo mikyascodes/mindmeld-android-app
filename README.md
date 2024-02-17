@@ -1,4 +1,4 @@
-![2024_02_17_16 41 25](https://github.com/mikyascodes/mindmeld-android-app/assets/103492500/1b891329-0f78-4f64-a763-ba1d5415aff3)# MIndMeld
+# MIndMeld
 ### social media app: basic soial media functionality
 ## Features
 - User can register with email
