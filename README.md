@@ -1,4 +1,4 @@
-# MIndMeld
+![2024_02_17_16 41 25](https://github.com/mikyascodes/mindmeld-android-app/assets/103492500/1b891329-0f78-4f64-a763-ba1d5415aff3)# MIndMeld
 ### social media app: basic soial media functionality
 ## Features
 - User can register with email
@@ -9,8 +9,8 @@
 ## Screenshot
 <img src="https://github.com/mikyascodes/mindmeld-android-app/assets/103492500/be9838d2-ef02-4685-817e-a56bdf730743" width=200 height=400/>
 <img src="https://github.com/mikyascodes/mindmeld-android-app/assets/103492500/c179361e-e48a-4a17-84c3-63de423581db" width=200 height=400/>
-<img src="https://github.com/mikyascodes/mindmeld-android-app/assets/103492500/907e5d78-01a1-406f-8afa-20b766cd9df2" width=200 height=400/>
-<img src="https://github.com/mikyascodes/mindmeld-android-app/assets/103492500/03a68ad2-eb99-46d0-a402-9b35cf26ab0a" width=200 height=400/>
+<img src="https://github.com/mikyascodes/mindmeld-android-app/assets/103492500/53de63c2-83ae-4ede-83b4-1a0a8d8c9af4" width=200 height=400/>
+<img src="https://github.com/mikyascodes/mindmeld-android-app/assets/103492500/2816ca60-6517-45dc-9f57-ee206b01f9f6" width=200 height=400/>
 <img src="https://github.com/mikyascodes/mindmeld-android-app/assets/103492500/7d5589ae-4f1a-4fa9-a541-dd16791ebff9"width=200 height=400/>
 
 ## Using
