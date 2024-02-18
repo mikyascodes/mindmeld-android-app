@@ -1,7 +1,6 @@
 package com.example.mindmeld.model;
 
 public class Post {
-
     private String postId;
     private String postImage;
     private String postedBy;

@@ -27,7 +27,6 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class UserAdapter extends RecyclerView.Adapter<UserAdapter.viewHolder> {
-
     private static UserAdapter.OnClickListener listener;
     Context context;
     ArrayList<User> list;
@@ -53,7 +52,6 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.viewHolder> {
                 .into(holder.binding.profileImage);
         holder.binding.name.setText(user.getName());
         holder.binding.profession.setText(user.getProfession());
-
         FirebaseDatabase.getInstance().getReference()
                 .child("Users")
                 .child(user.getUserID())
@@ -73,7 +71,6 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.viewHolder> {
                                     Follow follow = new Follow();
                                     follow.setFollowedBy(FirebaseAuth.getInstance().getUid());
                                     follow.setFollowedAt(new Date().getTime());
-
                                     FirebaseDatabase.getInstance().getReference()
                                             .child("Users")
                                             .child(user.getUserID())
@@ -94,19 +91,15 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.viewHolder> {
                                                                     holder.binding.followBtn.setTextColor(context.getResources().getColor(R.color.silver));
                                                                     holder.binding.followBtn.setEnabled(false);
                                                                     Toast.makeText(context, "You Followed " + user.getName(), Toast.LENGTH_SHORT).show();
-
-
                                                                     Notification notification = new Notification();
                                                                     notification.setNotificationBy(FirebaseAuth.getInstance().getUid());
                                                                     notification.setNotificationAt(new Date().getTime());
                                                                     notification.setType("follow");
-
                                                                     FirebaseDatabase.getInstance().getReference()
                                                                             .child("notification")
                                                                             .child(user.getUserID())
                                                                             .push()
                                                                             .setValue(notification);
-
                                                                     //
                                                                     FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                                                                             .child("Contacts").child(user.getUserID()).setValue("Chats");
@@ -114,24 +107,19 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.viewHolder> {
                                                                             .child("interactionTime").setValue(new Date().getTime());
                                                                     FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getUid()).child("Contacts").child(user.getUserID())
                                                                             .child("recentMessage").setValue("");
-
                                                                 }
                                                             });
                                                 }
                                             });
-
                                 }
                             });
-
                         }
                     }
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
-
                     }
                 });
-
     }
 
     @Override
@@ -152,16 +140,11 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.viewHolder> {
 
         public viewHolder(@NonNull View itemView) {
             super(itemView);
-
             binding = UserSampleBinding.bind(itemView);
-
             itemView.setOnClickListener(new View.OnClickListener() {
-
                 @Override
                 public void onClick(View v) {
-
                     int pos = getAdapterPosition();
-
                     if (listener != null && pos != RecyclerView.NO_POSITION) {
                         listener.onItemClick(list.get(pos));
                     }

@@ -19,7 +19,6 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GetTokenResult;
 import com.google.firebase.database.FirebaseDatabase;
 
-
 public class SignupActivity extends AppCompatActivity {
     ActivitySignupBinding binding;
     FirebaseAuth auth;
@@ -31,10 +30,8 @@ public class SignupActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivitySignupBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
         auth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();
-
         binding.signupBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -46,7 +43,6 @@ public class SignupActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             User user = new User(binding.nameET.getText().toString(), binding.profession.getText().toString(), Email, Password, binding.bio.getText().toString());
                             String id = task.getResult().getUser().getUid();
-
                             FirebaseUser mUser = task.getResult().getUser();
                             mUser.getIdToken(true).addOnCompleteListener(new OnCompleteListener<GetTokenResult>() {
                                 @Override
@@ -72,7 +68,6 @@ public class SignupActivity extends AppCompatActivity {
                 });
             }
         });
-
         binding.gotoLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

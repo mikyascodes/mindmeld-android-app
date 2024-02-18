@@ -21,23 +21,19 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 public class FollowersAdapter extends RecyclerView.Adapter<FollowersAdapter.viewHolder> {
-
     ArrayList<Follow> list;
     Context context;
-
 
     public FollowersAdapter(ArrayList<Follow> list, Context context) {
         this.list = list;
         this.context = context;
     }
 
-
     @NonNull
     @Override
     public viewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.friend_rv, parent, false);
         return new viewHolder(view);
-
     }
 
     @Override
@@ -54,12 +50,10 @@ public class FollowersAdapter extends RecyclerView.Adapter<FollowersAdapter.view
                                 .placeholder(R.drawable.cover_placeholder)
                                 .into(holder.binding.profileImage);
                         holder.binding.name.setText(user.getName());
-
                     }
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
-
                     }
                 });
     }
@@ -70,16 +64,12 @@ public class FollowersAdapter extends RecyclerView.Adapter<FollowersAdapter.view
     }
 
     public class viewHolder extends RecyclerView.ViewHolder {
-
         FriendRvBinding binding;
 
         public viewHolder(@NonNull View itemView) {
-
             super(itemView);
-
             binding = FriendRvBinding.bind(itemView);
         }
     }
-
 }
 

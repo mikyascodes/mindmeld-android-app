@@ -23,7 +23,6 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.viewHolder> {
-
     Context context;
     ArrayList<Comment> list;
 
@@ -42,10 +41,8 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.viewHold
     @Override
     public void onBindViewHolder(@NonNull viewHolder holder, int position) {
         Comment comment = list.get(position);
-
         String time = TimeAgo.using(comment.getCommentedAt());
         holder.binding.time.setText(time);
-
         FirebaseDatabase.getInstance().getReference()
                 .child("Users")
                 .child(comment.getCommentedBy()).addListenerForSingleValueEvent(new ValueEventListener() {
@@ -61,11 +58,8 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.viewHold
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
-
                     }
                 });
-
-
     }
 
     @Override
@@ -81,6 +75,5 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.viewHold
             binding = CommentSampleBinding.bind(itemView);
         }
     }
-
 }
 

@@ -25,7 +25,6 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapter.viewHolder> {
-
     ArrayList<Notification> list;
     Context context;
 
@@ -37,19 +36,14 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
     @NonNull
     @Override
     public viewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-
         View view = LayoutInflater.from(context).inflate(R.layout.notification2sample, viewGroup, false);
-
         return new viewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull viewHolder viewHolder, int i) {
         Notification notification = list.get(i);
-
         String type = notification.getType();
-
-
         FirebaseDatabase.getInstance().getReference()
                 .child("Users")
                 .child(notification.getNotificationBy())
@@ -72,22 +66,18 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
-
                     }
                 });
         viewHolder.binding.openNotification.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 if (!type.equals("follow")) {
-
                     FirebaseDatabase.getInstance().getReference()
                             .child("notification")
                             .child(notification.getPostedBy())
                             .child(notification.getNotificationId())
                             .child("checkOpen")
                             .setValue(true);
-
                     viewHolder.binding.openNotification.setBackgroundColor(Color.parseColor("#FFFFFF"));
                     Intent intent = new Intent(context, CommentActivity.class);
                     intent.putExtra("postId", notification.getPostId());
@@ -95,8 +85,6 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     context.startActivity(intent);
                 }
-
-
             }
         });
 //                Boolean checkOpen = notification.isCheckOpen();
@@ -111,15 +99,12 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
     }
 
     public class viewHolder extends RecyclerView.ViewHolder {
-
         Notification2sampleBinding binding;
 
         public viewHolder(@NonNull View itemView) {
-
             super(itemView);
             binding = Notification2sampleBinding.bind(itemView);
         }
     }
-
 }
 

@@ -50,12 +50,10 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.viewHolder> {
                 .child(model.getPostId())
                 .child("likes")
                 .child(FirebaseAuth.getInstance().getUid()).equals(false);
-
         Picasso.get()
                 .load(model.getPostImage())
                 .placeholder(R.drawable.cover_placeholder)
                 .into(holder.binding.postImg);
-
         holder.binding.like.setText(String.format("%d", model.getPostLike()));
         holder.binding.comment.setText(model.getCommentCount() + "");
         String description = model.getPostDescription();
@@ -64,9 +62,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.viewHolder> {
         } else {
             holder.binding.postDescription.setText(model.getPostDescription());
             holder.binding.postDescription.setVisibility(View.VISIBLE);
-
         }
-
         FirebaseDatabase.getInstance().getReference().child("Users")
                 .child(model.getPostedBy()).addValueEventListener(new ValueEventListener() {
                     @Override
@@ -82,13 +78,9 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.viewHolder> {
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
-
                     }
                 });
-
-
 //        ============= Like Count And Colour==================
-
         FirebaseDatabase.getInstance().getReference()
                 .child("posts")
                 .child(model.getPostId())
@@ -119,7 +111,6 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.viewHolder> {
                                                                 @Override
                                                                 public void onSuccess(Void aVoid) {
                                                                     holder.binding.like.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_red_heart_svgrepo_com, 0, 0, 0);
-
 //                 ================Like Notification ===================
                                                                     Notification notification = new Notification();
                                                                     notification.setNotificationBy(FirebaseAuth.getInstance().getUid());
@@ -127,30 +118,24 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.viewHolder> {
                                                                     notification.setPostId(model.getPostId());
                                                                     notification.setPostedBy(model.getPostedBy());
                                                                     notification.setType("like");
-
-
                                                                     FirebaseDatabase.getInstance().getReference()
                                                                             .child("notification")
                                                                             .child(model.getPostedBy())
                                                                             .push()
                                                                             .setValue(notification);
-
                                                                 }
                                                             });
                                                 }
                                             });
                                 }
                             });
-
                         }
                     }
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
-
                     }
                 });
-
         holder.binding.comment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -159,11 +144,8 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.viewHolder> {
                 intent.putExtra("postedBy", model.getPostedBy());
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(intent);
-
             }
         });
-
-
     }
 
     @Override
@@ -172,17 +154,12 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.viewHolder> {
     }
 
     public class viewHolder extends RecyclerView.ViewHolder {
-
         DashboardRvBinding binding;
 
         public viewHolder(@NonNull View itemView) {
             super(itemView);
-
             binding = DashboardRvBinding.bind(itemView);
-
-
         }
     }
-
 }
 

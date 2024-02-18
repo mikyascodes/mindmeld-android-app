@@ -38,19 +38,14 @@ public class CommentActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         binding = ActivityCommentBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         intent = getIntent();
-
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
         database = FirebaseDatabase.getInstance();
         auth = FirebaseAuth.getInstance();
-
         postId = intent.getStringExtra("postId");
         postedBy = intent.getStringExtra("postedBy");
-
         database.getReference()
                 .child("posts")
                 .child(postId).addValueEventListener(new ValueEventListener() {
@@ -69,10 +64,8 @@ public class CommentActivity extends AppCompatActivity {
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
-
                     }
                 });
-
         database.getReference().child("Users")
                 .child(postedBy).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
@@ -87,20 +80,15 @@ public class CommentActivity extends AppCompatActivity {
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
-
                     }
                 });
-
-
         binding.commentPostBtn.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
                 Comment comment = new Comment();
                 comment.setCommentBody(binding.commentET.getText().toString());
                 comment.setCommentedAt(new Date().getTime());
                 comment.setCommentedBy(FirebaseAuth.getInstance().getUid());
-
                 database.getReference()
                         .child("posts")
                         .child(postId)
@@ -128,41 +116,33 @@ public class CommentActivity extends AppCompatActivity {
                                                             public void onSuccess(Void aVoid) {
                                                                 binding.commentET.setText("");
                                                                 Toast.makeText(CommentActivity.this, "Commented", Toast.LENGTH_SHORT).show();
-
-
                                                                 Notification notification = new Notification();
                                                                 notification.setNotificationBy(FirebaseAuth.getInstance().getUid());
                                                                 notification.setNotificationAt(new Date().getTime());
                                                                 notification.setPostId(postId);
                                                                 notification.setPostedBy(postedBy);
                                                                 notification.setType("comment");
-
                                                                 FirebaseDatabase.getInstance().getReference()
                                                                         .child("notification")
                                                                         .child(postedBy)
                                                                         .push()
                                                                         .setValue(notification);
-
                                                             }
                                                         });
                                             }
 
                                             @Override
                                             public void onCancelled(@NonNull DatabaseError error) {
-
                                             }
                                         });
                             }
                         });
-
             }
         });
-
         CommentAdapter adapter = new CommentAdapter(this, list);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         binding.commentRV.setLayoutManager(layoutManager);
         binding.commentRV.setAdapter(adapter);
-
         database.getReference()
                 .child("posts")
                 .child(postId)
@@ -179,11 +159,8 @@ public class CommentActivity extends AppCompatActivity {
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
-
                     }
                 });
-
-
     }
 
     @Override

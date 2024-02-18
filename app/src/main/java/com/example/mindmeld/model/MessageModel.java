@@ -1,7 +1,6 @@
 package com.example.mindmeld.model;
 
 public class MessageModel {
-
     String uId, msgText;
     long msgTime;
 

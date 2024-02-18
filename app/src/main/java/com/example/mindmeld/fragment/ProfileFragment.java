@@ -35,7 +35,6 @@ public class ProfileFragment extends Fragment {
     FirebaseDatabase database;
 //    View changeCoverPhoto;
 
-
     public ProfileFragment() {
     }
 
@@ -48,17 +47,13 @@ public class ProfileFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         binding = FragmentProfileBinding.inflate(inflater, container, false);
         auth = FirebaseAuth.getInstance();
         storage = FirebaseStorage.getInstance();
         database = FirebaseDatabase.getInstance();
 //        View view = inflater.inflate(R.layout.fragment_profile, container, false);
 //        changeCoverPhoto = view.findViewById(R.id.changeCoverPhoto);
-
 //        recyclerView = view.findViewById(R.id.friendRecyclerView);
-
-
 //    =====Fetch User Data From Database=====
         database.getReference().child("Users").child(auth.getUid())
                 .addListenerForSingleValueEvent(new ValueEventListener() {
@@ -75,7 +70,6 @@ public class ProfileFragment extends Fragment {
                             binding.email.setText(user.getEmail());
                             binding.textView13.setText(user.getAbout());
                             binding.followers.setText(user.getFollowerCount() + "");
-
                             Picasso.get()
                                     .load(user.getProfilePhoto())
                                     .placeholder(R.drawable.cover_placeholder)
@@ -85,10 +79,8 @@ public class ProfileFragment extends Fragment {
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
-
                     }
                 });
-
         binding.changeCoverPhoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -98,7 +90,6 @@ public class ProfileFragment extends Fragment {
                 startActivityForResult(intent, 11);
             }
         });
-
         binding.verifiedAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -108,20 +99,16 @@ public class ProfileFragment extends Fragment {
                 startActivityForResult(intent, 22);
             }
         });
-
         return binding.getRoot();
     }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
         if (requestCode == 11) {
             if (data.getData() != null) {
                 Uri uri = data.getData();
                 binding.coverPhoto.setImageURI(uri);
-
-
                 final StorageReference reference = storage.getReference()
                         .child("cover_photo").child(FirebaseAuth.getInstance().getUid());
                 reference.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -136,14 +123,11 @@ public class ProfileFragment extends Fragment {
                         });
                     }
                 });
-
             }
         } else {
             if (data.getData() != null) {
                 Uri uri = data.getData();
                 binding.profileImage.setImageURI(uri);
-
-
                 final StorageReference reference = storage.getReference()
                         .child("profile_image").child(FirebaseAuth.getInstance().getUid());
                 reference.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -158,9 +142,7 @@ public class ProfileFragment extends Fragment {
                         });
                     }
                 });
-
             }
         }
-
     }
 }

@@ -29,10 +29,8 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
         auth = FirebaseAuth.getInstance();
         currentUser = auth.getCurrentUser();
-
         binding.loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -50,7 +48,6 @@ public class LoginActivity extends AppCompatActivity {
                             String tokenInMain = sharedPreferences.getString("ntoken", "mynull");
                             firebaseDatabase = FirebaseDatabase.getInstance();
                             firebaseDatabase.getReference("Users").child(id).child("token").setValue(tokenInMain);
-
                         } else {
                             Toast.makeText(LoginActivity.this, "Error", Toast.LENGTH_SHORT).show();
                         }
@@ -58,7 +55,6 @@ public class LoginActivity extends AppCompatActivity {
                 });
             }
         });
-
         binding.gotoSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -66,8 +62,6 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-
     }
 
     @Override

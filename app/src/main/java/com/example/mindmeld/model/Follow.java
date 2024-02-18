@@ -22,5 +22,4 @@ public class Follow {
     public void setFollowedBy(String followedBy) {
         this.followedBy = followedBy;
     }
-
 }

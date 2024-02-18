@@ -1,6 +1,5 @@
 package com.example.mindmeld;
 
-
 import android.app.Activity;
 import android.content.Context;
 
@@ -18,9 +17,7 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-
 public class FcmNotificationsSender {
-
     private final String postUrl = "https://fcm.googleapis.com/fcm/send";
     private final String fcmServerKey = "AAAAXAQIZSw:APA91bGsbJ2HZG8p-PMwnu9r5cd8RZ-Fe5zYulhPriKcXbLkGu0qd3AEsVlumjUEwdDWWgxVzfCJeEqXta0RaDUIRrUnoNyW5sbUZd_bSIV1mJsj1xPqscOjdojxOwL-BeXiM9inOTfy";
     String userFcmToken;
@@ -36,12 +33,9 @@ public class FcmNotificationsSender {
         this.body = body;
         this.mContext = mContext;
         this.mActivity = mActivity;
-
-
     }
 
     public void SendNotifications() {
-
         requestQueue = Volley.newRequestQueue(mActivity);
         JSONObject mainObj = new JSONObject();
         try {
@@ -51,41 +45,28 @@ public class FcmNotificationsSender {
             notiObject.put("body", body);
             notiObject.put("icon", "icon_for_splash");
             mainObj.put("notification", notiObject);
-
-
             JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, postUrl, mainObj, new Response.Listener<JSONObject>() {
                 @Override
                 public void onResponse(JSONObject response) {
-
                     // code run is got response
-
                 }
             }, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error) {
                     // code run is got error
-
                 }
             }) {
                 @Override
                 public Map<String, String> getHeaders() throws AuthFailureError {
-
-
                     Map<String, String> header = new HashMap<>();
                     header.put("content-type", "application/json");
                     header.put("authorization", "key=" + fcmServerKey);
                     return header;
-
-
                 }
             };
             requestQueue.add(request);
-
-
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
-
     }
 }

@@ -21,7 +21,6 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-
 public class Notification2Fragment extends Fragment {
     ShimmerRecyclerView recyclerView;
     ArrayList<Notification> list;
@@ -30,7 +29,6 @@ public class Notification2Fragment extends Fragment {
     public Notification2Fragment() {
         // Required empty public constructor
     }
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -43,16 +41,12 @@ public class Notification2Fragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_notification2, container, false);
-
         recyclerView = view.findViewById(R.id.notification2RV);
         recyclerView.showShimmerAdapter();
         list = new ArrayList<>();
-
         NotificationAdapter adapter = new NotificationAdapter(list, getContext());
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(layoutManager);
-
-
         database.getReference()
                 .child("notification")
                 .child(FirebaseAuth.getInstance().getUid())
@@ -71,11 +65,8 @@ public class Notification2Fragment extends Fragment {
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
-
                     }
                 });
-
-
         return view;
     }
 }

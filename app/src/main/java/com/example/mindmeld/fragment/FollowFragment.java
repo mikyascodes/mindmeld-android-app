@@ -35,7 +35,6 @@ public class FollowFragment extends Fragment {
         // Required empty public constructor
     }
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,14 +47,10 @@ public class FollowFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         binding = FragmentFollowBinding.inflate(inflater, container, false);
-
         binding.usersRV.showShimmerAdapter();
-
         UserAdapter adapter = new UserAdapter(getContext(), list);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         binding.usersRV.setLayoutManager(layoutManager);
-
-
         database.getReference().child("Users").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -68,7 +63,6 @@ public class FollowFragment extends Fragment {
                         list.add(user);
                     }
                 }
-
                 binding.usersRV.setAdapter(adapter);
                 binding.usersRV.hideShimmerAdapter();
                 adapter.notifyDataSetChanged();
@@ -76,10 +70,8 @@ public class FollowFragment extends Fragment {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
             }
         });
-
         //--------------search-------------
         UserAdapter adapter2 = new UserAdapter(getContext(), searchedUser);
         LinearLayoutManager layoutManager2 = new LinearLayoutManager(getContext());
@@ -87,33 +79,22 @@ public class FollowFragment extends Fragment {
         binding.searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-
                 binding.searchView.clearFocus();
                 searchedUser.clear();
-
                 database.getReference("Users").addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-
                         boolean flag = false;
-
                         for (DataSnapshot e : snapshot.getChildren()) {
-
                             flag = e.getKey().equals(auth.getCurrentUser().getUid());
-
-
                             if (!flag && e.child("email").getValue().equals(query.trim())) {
-
-
                                 Log.d("testcontact", " " + query + "  name= " + e.child("name").getValue().toString());
                                 User user = new User();
                                 user.setName(e.child("name").getValue().toString());
-
                                 user.setUserID(e.getKey());
                                 searchedUser.add(user);
                             }
                         }
-
                         binding.usersRV.setAdapter(adapter2);
                         binding.usersRV.hideShimmerAdapter();
                         adapter2.notifyDataSetChanged();
@@ -131,41 +112,28 @@ public class FollowFragment extends Fragment {
                 return false;
             }
         });
-
         adapter.setOnItemClickListener(new UserAdapter.OnClickListener() {
             @Override
             public void onItemClick(User userdata) {
-
-
                 Intent intent = new Intent(getActivity(), MessagingActivity.class);
                 intent.putExtra("USERNAME", userdata.getName());
                 intent.putExtra("PROFILEIMAGE", userdata.getProfile());
                 intent.putExtra("USERID", userdata.getUserID());
                 intent.putExtra("TOKEN", userdata.getToken());
                 startActivity(intent);
-
-
             }
         });
-
         adapter2.setOnItemClickListener(new UserAdapter.OnClickListener() {
             @Override
             public void onItemClick(User userdata) {
-
-
                 Intent intent = new Intent(getActivity(), MessagingActivity.class);
                 intent.putExtra("USERNAME", userdata.getName());
                 intent.putExtra("PROFILEIMAGE", userdata.getProfile());
                 intent.putExtra("USERID", userdata.getUserID());
                 intent.putExtra("TOKEN", userdata.getToken());
                 startActivity(intent);
-
-
             }
         });
-
-
         return binding.getRoot();
     }
-
 }

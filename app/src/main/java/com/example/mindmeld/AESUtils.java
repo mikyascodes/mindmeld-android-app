@@ -5,7 +5,6 @@ import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
 
 public class AESUtils {
-
     private static final byte[] keyValue =
             new byte[]{'c', 'o', 'd', 'i', 'n', 'g', 'a', 'f', 'f', 'a', 'i', 'r', 's', 'c', 'o', 'm'};
     private final static String HEX = "0123456789ABCDEF";
@@ -19,7 +18,6 @@ public class AESUtils {
 
     public static String decrypt(String encrypted)
             throws Exception {
-
         byte[] enc = toByte(encrypted);
         byte[] result = decrypt(enc);
         return new String(result);

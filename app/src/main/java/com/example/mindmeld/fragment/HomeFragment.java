@@ -32,7 +32,6 @@ import java.util.ArrayList;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-
 public class HomeFragment extends Fragment {
     ShimmerRecyclerView dashboardRV, friendRV;
     ArrayList<Follow> friendList;
@@ -43,16 +42,13 @@ public class HomeFragment extends Fragment {
     CircleImageView profileImage;
     Context context;
 
-
     public HomeFragment() {
         // Required empty public constructor
     }
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
@@ -60,25 +56,19 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
-
         dashboardRV = view.findViewById(R.id.dashboardRV);
         dashboardRV.showShimmerAdapter();
-
         friendRV = view.findViewById(R.id.friendRV);
         friendRV.showShimmerAdapter();
-
         database = FirebaseDatabase.getInstance();
         auth = FirebaseAuth.getInstance();
         storage = FirebaseStorage.getInstance();
-
         friendList = new ArrayList<>();
         FollowersAdapter adapter = new FollowersAdapter(friendList, getContext());
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
         friendRV.setLayoutManager(linearLayoutManager);
         friendRV.setNestedScrollingEnabled(false);
-
         //        ============STORY=============
-
         database.getReference().child("Users")
                 .child(auth.getUid())
                 .child("followers").addValueEventListener(new ValueEventListener() {
@@ -94,7 +84,6 @@ public class HomeFragment extends Fragment {
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
-
                     }
                 });
 //        TextView empty = (TextView) view.findViewById(R.id.empty);
@@ -102,15 +91,11 @@ public class HomeFragment extends Fragment {
 //        empty.setVisibility(friendList.isEmpty()?View.VISIBLE:View.GONE);
 //
         //        ===========DASHBOARD===============
-
         postList = new ArrayList<>();
-
         PostAdapter postAdapter = new PostAdapter(postList, getContext());
         LinearLayoutManager layoutManager1 = new LinearLayoutManager(getContext());
         dashboardRV.setLayoutManager(layoutManager1);
         dashboardRV.setNestedScrollingEnabled(false);
-
-
         database.getReference().child("posts").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -127,10 +112,8 @@ public class HomeFragment extends Fragment {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
             }
         });
-
         //profile  image
         profileImage = view.findViewById(R.id.profile_image);
         FirebaseDatabase.getInstance().getReference()
@@ -147,7 +130,6 @@ public class HomeFragment extends Fragment {
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
-
                     }
                 });
         return view;
@@ -157,7 +139,6 @@ public class HomeFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
         NavController navController = Navigation.findNavController(view);
         profileImage.setOnClickListener(new View.OnClickListener() {
             @Override

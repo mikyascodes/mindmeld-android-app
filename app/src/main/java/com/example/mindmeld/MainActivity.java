@@ -29,7 +29,6 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity {
-
     FirebaseAuth auth = FirebaseAuth.getInstance();
     SharedPreferences sharedPreferences = null;
     Menu menu;
@@ -42,9 +41,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
         // ---------Navigation setup Below----------
-
         setSupportActionBar(binding.toolbar);
         DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
@@ -54,19 +51,16 @@ public class MainActivity extends AppCompatActivity {
         mAppBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph())
                 .setOpenableLayout(drawer)
                 .build();
-
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
         BottomNavigationView navBottom = binding.contentMain.navBottomBar;
         NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().
                 findFragmentById(R.id.nav_host_fragment_content_main);
         NavigationUI.setupWithNavController(navBottom, navHostFragment.getNavController());
-
         //check if is online
         if (!isOnline()) {
             Toast.makeText(MainActivity.this, "Check Internet Connection", Toast.LENGTH_LONG).show();
         }
-
     }
 
     @Override
@@ -93,7 +87,6 @@ public class MainActivity extends AppCompatActivity {
                     SharedPreferences.Editor editor = sharedPreferences.edit();
                     editor.putBoolean("night_mode", true);
                     editor.commit();
-
                 } else {
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
                     switchCompat.setChecked(false);

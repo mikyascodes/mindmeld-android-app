@@ -13,15 +13,12 @@ import com.example.mindmeld.adapter.ViewPagerAdapter;
 import com.google.android.material.tabs.TabLayout;
 
 public class NotificationFragment extends Fragment {
-
     ViewPager viewPager;
     TabLayout tabLayout;
-
 
     public NotificationFragment() {
         // Required empty public constructor
     }
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -32,10 +29,8 @@ public class NotificationFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_notification, container, false);
-
         viewPager = view.findViewById(R.id.viewPager);
         viewPager.setAdapter(new ViewPagerAdapter(getFragmentManager()));
-
         tabLayout = view.findViewById(R.id.tabLayout);
         tabLayout.setupWithViewPager(viewPager);
         return view;

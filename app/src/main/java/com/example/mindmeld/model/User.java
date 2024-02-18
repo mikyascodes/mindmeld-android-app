@@ -30,7 +30,6 @@ public class User {
         this.about = about;
     }
 
-
     // for displaying in chats list and search list
     public User(String userName, String userMail, String profilePic) {
         this.name = userName;

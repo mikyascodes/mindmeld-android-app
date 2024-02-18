@@ -34,7 +34,6 @@ import com.squareup.picasso.Picasso;
 import java.util.Date;
 
 public class AddFragment extends Fragment {
-
     FragmentAddBinding binding;
     Uri uri;
     FirebaseAuth auth;
@@ -46,11 +45,9 @@ public class AddFragment extends Fragment {
         // Required empty public constructor
     }
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         auth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();
         storage = FirebaseStorage.getInstance();
@@ -62,13 +59,11 @@ public class AddFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         binding = FragmentAddBinding.inflate(inflater, container, false);
-
         dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         dialog.setTitle("Post Uploading");
         dialog.setMessage("Please Wait...");
         dialog.setCancelable(false);
         dialog.setCanceledOnTouchOutside(false);
-
         database.getReference()
                 .child("Users")
                 .child(FirebaseAuth.getInstance().getUid()).addValueEventListener(new ValueEventListener() {
@@ -87,14 +82,11 @@ public class AddFragment extends Fragment {
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
-
                     }
                 });
-
         binding.postDescription.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
             }
 
             @Override
@@ -109,15 +101,12 @@ public class AddFragment extends Fragment {
                     binding.postBtn.setTextColor(getContext().getResources().getColor(R.color.silver));
                     binding.postBtn.setEnabled(false);
                 }
-
             }
 
             @Override
             public void afterTextChanged(Editable s) {
-
             }
         });
-
         binding.addImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -127,13 +116,10 @@ public class AddFragment extends Fragment {
                 startActivityForResult(intent, 10);
             }
         });
-
         binding.postBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 dialog.show();
-
                 final StorageReference reference = storage.getReference().child("posts")
                         .child(FirebaseAuth.getInstance().getUid())
                         .child(new Date().getTime() + "");
@@ -148,7 +134,6 @@ public class AddFragment extends Fragment {
                                 post.setPostedBy(FirebaseAuth.getInstance().getUid());
                                 post.setPostDescription(binding.postDescription.getText().toString());
                                 post.setPostedAt(new Date().getTime());
-
                                 database.getReference().child("posts")
                                         .push()
                                         .setValue(post).addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -164,7 +149,6 @@ public class AddFragment extends Fragment {
                 });
             }
         });
-
         return binding.getRoot();
     }
 
@@ -175,11 +159,9 @@ public class AddFragment extends Fragment {
             uri = data.getData();
             binding.postImage.setImageURI(uri);
             binding.postImage.setVisibility(View.VISIBLE);
-
             binding.postBtn.setBackgroundDrawable(ContextCompat.getDrawable(getContext(), R.drawable.follow_btn_bg));
             binding.postBtn.setTextColor(getContext().getResources().getColor(R.color.white));
             binding.postBtn.setEnabled(true);
         }
-
     }
 }

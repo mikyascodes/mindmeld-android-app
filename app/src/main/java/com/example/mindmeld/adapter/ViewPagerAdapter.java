@@ -21,7 +21,6 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
             case 0:
             default:
                 return new Notification2Fragment();
-
         }
     }
 
@@ -33,14 +32,12 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
     @Nullable
     @Override
     public CharSequence getPageTitle(int position) {
-
         String title = null;
         if (position == 0) {
             title = "NOTIFICATION";
         } else if (position == 1) {
             title = "REQUEST";
         }
-
         return title;
     }
 }
