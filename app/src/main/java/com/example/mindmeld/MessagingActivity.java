@@ -98,7 +98,6 @@ public class MessagingActivity extends AppCompatActivity {
                         // Failed to read value
                     }
                 });
-//        FirebaseMessaging.getInstance().subscribeToTopic("all");
         //Messaging Mechanism
         activityMessagingBinding.sendMsgBtn.setOnClickListener(new View.OnClickListener() {
             @Override
