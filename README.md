@@ -1,12 +1,12 @@
-# MIndMeld
+# MindMeld
 
-### social media app: basic soial media functionality
+### social media app: basic social media functionality
 
 ## Features
 
 - User can register with email
 - User can add personal info such name, profile image
-- User can see userlist who are using the application
+- User can see list of users who are using the application
 - User can send text message each other -User can see notification if someone message
 
 ## Screenshot
