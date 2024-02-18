@@ -46,7 +46,7 @@ public class FirebaseMessagingService extends com.google.firebase.messaging.Fire
         Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
         long[] pattern = {100, 300};
         v.vibrate(pattern, -1);
-        Intent chatIntent = new Intent(this, MessagingActivity.class);
+        Intent chatIntent = new Intent(this, MainActivity.class);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 1, chatIntent, PendingIntent.FLAG_UPDATE_CURRENT);
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "CHANNEL_ID");
         builder.setContentTitle(remoteMessage.getNotification().getTitle());
