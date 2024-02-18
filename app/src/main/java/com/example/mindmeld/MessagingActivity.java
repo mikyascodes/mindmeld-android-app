@@ -26,10 +26,10 @@ import java.util.Date;
 
 public class MessagingActivity extends AppCompatActivity {
 
+    public String receiverId;
     FirebaseAuth firebaseAuth;
     FirebaseDatabase firebaseDatabase;
     ActivityMessagingBinding activityMessagingBinding;
-    public String receiverId;
     String receiverToken, senderName;
     String senderId;
 

@@ -8,7 +8,7 @@ public class AESUtils {
 
     private static final byte[] keyValue =
             new byte[]{'c', 'o', 'd', 'i', 'n', 'g', 'a', 'f', 'f', 'a', 'i', 'r', 's', 'c', 'o', 'm'};
-
+    private final static String HEX = "0123456789ABCDEF";
 
     public static String encrypt(String cleartext)
             throws Exception {
@@ -66,8 +66,6 @@ public class AESUtils {
         }
         return result.toString();
     }
-
-    private final static String HEX = "0123456789ABCDEF";
 
     private static void appendHex(StringBuffer sb, byte b) {
         sb.append(HEX.charAt((b >> 4) & 0x0f)).append(HEX.charAt(b & 0x0f));

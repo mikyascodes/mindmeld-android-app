@@ -20,12 +20,11 @@ import java.util.Calendar;
 
 public class messageAdapter extends RecyclerView.Adapter {
 
+    final int SENDER_VIEWHOLDER = 0;
+    final int RECEIVER_VIEWHOLDER = 1;
     ArrayList<MessageModel> msgData;
     Context context;
     FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
-
-    final int SENDER_VIEWHOLDER = 0;
-    final int RECEIVER_VIEWHOLDER = 1;
 
 
     public messageAdapter(ArrayList<MessageModel> msgData, Context context) {

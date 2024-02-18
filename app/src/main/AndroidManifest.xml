@@ -15,8 +15,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MindMeld"
-        tools:targetApi="31"
-        android:windowSoftInputMode="adjustPan">
+        android:windowSoftInputMode="adjustPan"
+        tools:targetApi="31">
         <activity
             android:name=".SplashScreenActivity"
             android:exported="true"
@@ -39,11 +39,11 @@
         <activity
             android:name=".MainActivity"
             android:exported="false"
-            android:theme="@style/Theme.MindMeld.NoActionBar"/>
+            android:theme="@style/Theme.MindMeld.NoActionBar" />
         <activity
             android:name=".LoginActivity"
-            android:exported="false"
-            />
+            android:exported="false" />
+
         <service
             android:name=".FirebaseMessagingService"
             android:exported="false"

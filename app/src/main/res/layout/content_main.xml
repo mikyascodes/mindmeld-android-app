@@ -25,13 +25,13 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:background="@color/royal_blue"
+        app:itemIconSize="25sp"
+        app:itemIconTint="@drawable/bottom_navigation_color"
+        app:itemTextColor="@drawable/bottom_navigation_color"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:menu="@menu/bottom_menu"
-        app:itemIconTint="@drawable/bottom_navigation_color"
-        app:itemTextColor="@drawable/bottom_navigation_color"
-        app:itemIconSize="25sp">
+        app:menu="@menu/bottom_menu">
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -30,5 +30,6 @@
     </style>
 
     <style name="Theme.MindMeld.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
     <style name="Theme.MindMeld.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

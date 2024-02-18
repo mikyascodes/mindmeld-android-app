@@ -7,7 +7,36 @@ public class User {
     private String profile;
     private int followerCount;
     private long recentMsgTime;
+    private String profilePhoto;
 
+    public User() {
+    }
+
+    public User(String name, String profession, String email, String password, String about) {
+        this.name = name;
+        this.profession = profession;
+        this.email = email;
+        this.password = password;
+        this.about = about;
+    }
+
+    //
+    public User(String profilePic, String userName, String userMail, String userId, String userPassword, String about) {
+        this.profile = profilePic;
+        this.name = userName;
+        this.email = userMail;
+        this.UserID = userId;
+        this.password = userPassword;
+        this.about = about;
+    }
+
+
+    // for displaying in chats list and search list
+    public User(String userName, String userMail, String profilePic) {
+        this.name = userName;
+        this.email = userMail;
+        this.profile = profilePic;
+    }
 
     public int getFollowerCount() {
         return followerCount;
@@ -25,7 +54,6 @@ public class User {
         UserID = userID;
     }
 
-
     public String getProfile() {
         return profile;
     }
@@ -34,18 +62,12 @@ public class User {
         this.profile = profile;
     }
 
-
     public String getProfilePhoto() {
         return profilePhoto;
     }
 
     public void setProfilePhoto(String profilePhoto) {
         this.profilePhoto = profilePhoto;
-    }
-
-    private String profilePhoto;
-
-    public User() {
     }
 
     public String getCoverPhoto() {
@@ -118,30 +140,5 @@ public class User {
 
     public void setRecentMessage(String recentMessage) {
         this.recentMessage = recentMessage;
-    }
-
-    public User(String name, String profession, String email, String password, String about) {
-        this.name = name;
-        this.profession = profession;
-        this.email = email;
-        this.password = password;
-        this.about = about;
-    }
-
-    //
-    public User(String profilePic, String userName, String userMail, String userId, String userPassword, String about) {
-        this.profile = profilePic;
-        this.name = userName;
-        this.email = userMail;
-        this.UserID = userId;
-        this.password = userPassword;
-        this.about = about;
-    }
-
-    // for displaying in chats list and search list
-    public User(String userName, String userMail, String profilePic) {
-        this.name = userName;
-        this.email = userMail;
-        this.profile = profilePic;
     }
 }

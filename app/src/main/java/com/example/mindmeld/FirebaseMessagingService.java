@@ -20,9 +20,9 @@ import com.google.firebase.messaging.RemoteMessage;
 
 public class FirebaseMessagingService extends com.google.firebase.messaging.FirebaseMessagingService {
 
+    public String nToken;
     NotificationManager mNotificationManager;
     SharedPreferences sharedPreferences;
-    public String nToken;
 
     @Override
     public void onNewToken(@NonNull String s) {

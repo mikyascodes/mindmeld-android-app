@@ -32,9 +32,9 @@
             android:paddingEnd="5dp"
             android:paddingBottom="5dp"
             android:textColor="@android:color/black"
-            app:queryHint="Search with emails"
+            app:layout_constraintEnd_toEndOf="@id/searchMenuBar"
             app:layout_constraintStart_toStartOf="@id/searchMenuBar"
-            app:layout_constraintEnd_toEndOf="@id/searchMenuBar" />
+            app:queryHint="Search with emails" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.cooltechworks.views.shimmer.ShimmerRecyclerView

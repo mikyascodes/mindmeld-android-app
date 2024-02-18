@@ -3,6 +3,11 @@ package com.example.mindmeld.model;
 public class Notification {
     private String notificationBy;
     private String type;
+    private String postId;
+    private String postedBy;
+    private String notificationId;
+    private Long notificationAt;
+    private boolean checkOpen;
 
     public String getNotificationId() {
         return notificationId;
@@ -11,12 +16,6 @@ public class Notification {
     public void setNotificationId(String notificationId) {
         this.notificationId = notificationId;
     }
-
-    private String postId;
-    private String postedBy;
-    private String notificationId;
-    private Long notificationAt;
-    private boolean checkOpen;
 
     public String getNotificationBy() {
         return notificationBy;

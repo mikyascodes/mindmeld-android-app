@@ -1,6 +1,9 @@
 package com.example.mindmeld.model;
 
 public class Follow {
+    private long followedAt;
+    private String followedBy;
+
     public Follow() {
     }
 
@@ -11,11 +14,6 @@ public class Follow {
     public void setFollowedAt(long followedAt) {
         this.followedAt = followedAt;
     }
-
-    private long followedAt;
-
-
-    private String followedBy;
 
     public String getFollowedBy() {
         return followedBy;

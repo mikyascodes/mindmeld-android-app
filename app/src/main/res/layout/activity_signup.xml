@@ -16,13 +16,13 @@
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_marginTop="15dp"
+            android:src="@drawable/meetinglogo"
             app:layout_constraintBottom_toTopOf="@+id/WelcomeText"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_chainStyle="packed"
-            android:src="@drawable/meetinglogo" />
+            app:layout_constraintVertical_chainStyle="packed" />
 
         <TextView
             android:id="@+id/WelcomeText"
@@ -53,8 +53,8 @@
             app:layout_constraintTop_toBottomOf="@+id/WelcomeText" />
 
         <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:id="@+id/textInputLayout2"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -62,12 +62,12 @@
             android:layout_marginEnd="16dp"
             android:background="@drawable/input_text_bg"
             app:endIconMode="clear_text"
-            app:startIconDrawable="@drawable/ic_baseline_email_24"
             app:layout_constraintBottom_toTopOf="@+id/textInputLayout1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayout3">
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout3"
+            app:startIconDrawable="@drawable/ic_baseline_email_24">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/emailET"
@@ -76,28 +76,28 @@
                 android:background="@android:color/transparent"
                 android:hint="Email"
                 android:inputType="textEmailAddress"
-                android:textColor="@color/black"
                 android:paddingStart="5dp"
                 android:paddingEnd="5dp"
-                android:paddingBottom="5dp" />
+                android:paddingBottom="5dp"
+                android:textColor="@color/black" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:id="@+id/textInputLayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="16dp"
             android:background="@drawable/input_text_bg"
-            app:startIconDrawable="@drawable/ic_baseline_person_24"
             app:endIconMode="clear_text"
             app:layout_constraintBottom_toTopOf="@+id/textInputLayout3"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView16">
+            app:layout_constraintTop_toBottomOf="@+id/textView16"
+            app:startIconDrawable="@drawable/ic_baseline_person_24">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/nameET"
@@ -105,28 +105,28 @@
                 android:layout_height="wrap_content"
                 android:background="@android:color/transparent"
                 android:hint="Name"
-                android:textColor="@color/black"
                 android:paddingStart="5dp"
                 android:paddingEnd="5dp"
-                android:paddingBottom="5dp" />
+                android:paddingBottom="5dp"
+                android:textColor="@color/black" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:id="@+id/textInputLayout1"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
             android:background="@drawable/input_text_bg"
-            app:startIconDrawable="@drawable/ic_baseline_lock_24"
             app:endIconMode="password_toggle"
             app:layout_constraintBottom_toTopOf="@+id/signupBtn"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayout2">
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout2"
+            app:startIconDrawable="@drawable/ic_baseline_lock_24">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/passwordET"
@@ -134,28 +134,28 @@
                 android:layout_height="wrap_content"
                 android:background="@android:color/transparent"
                 android:hint="Password"
-                android:textColor="@color/black"
                 android:inputType="textPassword"
                 android:paddingStart="5dp"
                 android:paddingEnd="5dp"
-                android:paddingBottom="5dp" />
+                android:paddingBottom="5dp"
+                android:textColor="@color/black" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:id="@+id/textInputLayout3"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
             android:background="@drawable/input_text_bg"
-            app:startIconDrawable="@drawable/ic_baseline_work_24"
             app:layout_constraintBottom_toTopOf="@+id/textInputLayout2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout"
+            app:startIconDrawable="@drawable/ic_baseline_work_24">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/profession"
@@ -163,15 +163,15 @@
                 android:layout_height="wrap_content"
                 android:background="@android:color/transparent"
                 android:hint="Profession"
-                android:textColor="@color/black"
                 android:paddingStart="5dp"
                 android:paddingEnd="5dp"
-                android:paddingBottom="5dp" />
+                android:paddingBottom="5dp"
+                android:textColor="@color/black" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:id="@+id/textInputLayout4"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -190,10 +190,10 @@
                 android:layout_height="70dp"
                 android:background="@android:color/transparent"
                 android:hint="Tell us about yourSelf.."
-                android:textColor="@color/black"
                 android:paddingStart="5dp"
                 android:paddingEnd="5dp"
-                android:paddingBottom="5dp" />
+                android:paddingBottom="5dp"
+                android:textColor="@color/black" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <androidx.appcompat.widget.AppCompatButton

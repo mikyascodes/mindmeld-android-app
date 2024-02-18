@@ -30,12 +30,12 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity {
 
-    private AppBarConfiguration mAppBarConfiguration;
-    private ActivityMainBinding binding;
     FirebaseAuth auth = FirebaseAuth.getInstance();
     SharedPreferences sharedPreferences = null;
     Menu menu;
     SwitchCompat switchCompat;
+    private AppBarConfiguration mAppBarConfiguration;
+    private ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

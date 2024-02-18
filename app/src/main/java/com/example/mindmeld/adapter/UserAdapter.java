@@ -28,9 +28,9 @@ import java.util.Date;
 
 public class UserAdapter extends RecyclerView.Adapter<UserAdapter.viewHolder> {
 
+    private static UserAdapter.OnClickListener listener;
     Context context;
     ArrayList<User> list;
-    private static UserAdapter.OnClickListener listener;
 
     public UserAdapter(Context context, ArrayList<User> list) {
         this.context = context;
@@ -139,6 +139,14 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.viewHolder> {
         return list.size();
     }
 
+    public void setOnItemClickListener(UserAdapter.OnClickListener listener) {
+        UserAdapter.listener = listener;
+    }
+
+    public interface OnClickListener {
+        void onItemClick(User userData);
+    }
+
     public class viewHolder extends RecyclerView.ViewHolder {
         UserSampleBinding binding;
 
@@ -160,14 +168,6 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.viewHolder> {
                 }
             });
         }
-    }
-
-    public interface OnClickListener {
-        void onItemClick(User userData);
-    }
-
-    public void setOnItemClickListener(UserAdapter.OnClickListener listener) {
-        UserAdapter.listener = listener;
     }
 }
 

@@ -66,12 +66,12 @@
                 android:layout_height="121dp"
                 android:layout_marginStart="16dp"
                 android:orientation="horizontal"
-                app:shimmer_demo_child_count="5"
-                app:shimmer_demo_layout="@layout/demo_friends"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/view2">
+                app:layout_constraintTop_toBottomOf="@+id/view2"
+                app:shimmer_demo_child_count="5"
+                app:shimmer_demo_layout="@layout/demo_friends">
 
             </com.cooltechworks.views.shimmer.ShimmerRecyclerView>
 
@@ -93,13 +93,13 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
-                app:shimmer_demo_child_count="10"
-                app:shimmer_demo_layout="@layout/demo_post"
                 android:visibility="visible"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/view4"
+                app:shimmer_demo_child_count="10"
+                app:shimmer_demo_layout="@layout/demo_post"
                 tools:visibility="visible" />
 
 
