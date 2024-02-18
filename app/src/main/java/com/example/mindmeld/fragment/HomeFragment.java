@@ -79,78 +79,77 @@ public class HomeFragment extends Fragment {
 
         //        ============STORY=============
 
-        database.getReference().child("Users")
-                .child(auth.getUid())
-                .child("followers").addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                            Follow follow = dataSnapshot.getValue(Follow.class);
-                            friendList.add(follow);
+            database.getReference().child("Users")
+                    .child(auth.getUid())
+                    .child("followers").addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                                Follow follow = dataSnapshot.getValue(Follow.class);
+                                friendList.add(follow);
+                            }
+                            friendRV.setAdapter(adapter);
+                            adapter.notifyDataSetChanged();
                         }
-                        friendRV.setAdapter(adapter);
-                        adapter.notifyDataSetChanged();
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+//        TextView empty = (TextView) view.findViewById(R.id.empty);
+//        friendRV.setVisibility(friendList.isEmpty()?View.GONE:View.VISIBLE);
+//        empty.setVisibility(friendList.isEmpty()?View.VISIBLE:View.GONE);
+//
+            //        ===========DASHBOARD===============
+
+            postList = new ArrayList<>();
+
+            PostAdapter postAdapter = new PostAdapter(postList, getContext());
+            LinearLayoutManager layoutManager1 = new LinearLayoutManager(getContext());
+            dashboardRV.setLayoutManager(layoutManager1);
+            dashboardRV.setNestedScrollingEnabled(false);
+
+
+            database.getReference().child("posts").addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    postList.clear();
+                    for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                        Post post = dataSnapshot.getValue(Post.class);
+                        post.setPostId(dataSnapshot.getKey());
+                        postList.add(post);
                     }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-                });
-        /* TextView empty = (TextView) view.findViewById(R.id.empty);
-        friendRV.setVisibility(friendList.isEmpty()?View.GONE:View.VISIBLE);
-        empty.setVisibility(friendList.isEmpty()?View.VISIBLE:View.GONE);
-*/
-        //        ===========DASHBOARD===============
-
-        postList = new ArrayList<>();
-
-        PostAdapter postAdapter = new PostAdapter(postList, getContext());
-        LinearLayoutManager layoutManager1 = new LinearLayoutManager(getContext());
-        dashboardRV.setLayoutManager(layoutManager1);
-        dashboardRV.setNestedScrollingEnabled(false);
-
-
-        database.getReference().child("posts").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                postList.clear();
-                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    Post post = dataSnapshot.getValue(Post.class);
-                    post.setPostId(dataSnapshot.getKey());
-                    postList.add(post);
+                    dashboardRV.setAdapter(postAdapter);
+                    //dashboardRV.hideShimmerAdapter();
+                    postAdapter.notifyDataSetChanged();
                 }
-                dashboardRV.setAdapter(postAdapter);
-                //dashboardRV.hideShimmerAdapter();
-                postAdapter.notifyDataSetChanged();
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
 
-            }
-        });
+                }
+            });
 
-        //profile  image
-        profileImage = view.findViewById(R.id.profile_image);
-        FirebaseDatabase.getInstance().getReference()
-                .child("Users")
-                .child(auth.getCurrentUser().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        User user = snapshot.getValue(User.class);
-                        Picasso.get()
-                                .load(user.getProfilePhoto())
-                                .placeholder(R.drawable.cover_placeholder)
-                                .into(profileImage);
-                    }
+            //profile  image
+            profileImage = view.findViewById(R.id.profile_image);
+            FirebaseDatabase.getInstance().getReference()
+                    .child("Users")
+                    .child(auth.getCurrentUser().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            User user = snapshot.getValue(User.class);
+                            Picasso.get()
+                                    .load(user.getProfilePhoto())
+                                    .placeholder(R.drawable.cover_placeholder)
+                                    .into(profileImage);
+                        }
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
 
-                    }
-                });
-        //
+                        }
+                    });
         return view;
     }
 
